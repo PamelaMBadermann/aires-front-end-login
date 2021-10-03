@@ -12,9 +12,9 @@ export default {
 
 <style scoped>
 
-img {
-  height: 95px;
-  width: 95px;
-  margin: 50px;
+img { 
+  height: 80px;
+  width: 80px;
+  margin: 20px;
 }
 </style>

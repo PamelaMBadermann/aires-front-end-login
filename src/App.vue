@@ -1,17 +1,14 @@
 <template>
-  <LeftCard/>
-  <RightForm/>
+  <LoginForm/>
 </template>
 
 <script>
-import LeftCard from './components/LeftCard.vue';
-import RightForm from './components/RightForm.vue';
+import LoginForm from './components/LoginForm.vue';
 
 export default {
   name: 'App',
   components: {
-    LeftCard,
-    RightForm
+    LoginForm
   },
 
 }
@@ -23,10 +20,12 @@ export default {
   font-family: Usual, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  display: flex;
+  justify-content: flex-start;
+  text-align: flex-start;
   margin: 0;
   padding: 0;
   height: 100vh;
+  flex-wrap: wrap;
 }
 </style>

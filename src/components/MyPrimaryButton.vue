@@ -1,11 +1,11 @@
 <template>
-  <button v-on:click="addComment" class="my-primary" type="submit">Crie sua conta</button>
+  <button class="my-primary" type="submit" value="Enviar">{{button-title}}</button>
 </template>
 
 <script>
 export default {
   name: "MyPrimaryButton",
-  props: ["image"]
+  props: ["button-title"]
 }
 
 </script>
@@ -15,6 +15,7 @@ export default {
 .my-primary {
   height: 42px;
   width: 428px;
+  margin: 15px;
   opacity: 1;
   color: whitesmoke;
   border: 1px solid ;
@@ -22,6 +23,5 @@ export default {
   border-radius: 12px;
   letter-spacing: 0.98px;
   background-color: #0046F5;
-  margin: 0;
 }
 </style>
