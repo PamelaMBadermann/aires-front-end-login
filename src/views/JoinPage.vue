@@ -1,6 +1,8 @@
 <template>
-  <LeftCard/>
-  <JoinForm/>
+  <router-view>
+    <LeftCard/>
+    <JoinForm/>
+  </router-view>
 </template>
 
 <script>

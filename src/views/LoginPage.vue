@@ -1,6 +1,8 @@
 <template>
-  <LeftCard/>
-  <LoginForm/>
+  <router-view>
+    <LeftCard/>
+    <LoginForm/>
+  </router-view>
 </template>
 
 <script>

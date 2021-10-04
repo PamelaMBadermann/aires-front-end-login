@@ -1,10 +1,7 @@
 <template>
-  <LogoAires/>
-  <div>
-    <router-link to="/HealthPage"/>
-    <router-view/> 
-  </div>
-
+  <router-view>
+    <LogoAires/>
+  </router-view>
 </template>
 
 <script>
