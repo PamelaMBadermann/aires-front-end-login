@@ -1,20 +1,18 @@
 <template>
-  <LoginPage/>
-  <JoinPage/>
-  <HealthPage/>
+  <LogoAires/>
+  <div>
+    <router-link to="/HealthPage"/>
+    <router-view/> 
+  </div>
+
 </template>
 
 <script>
-import LoginPage from './views/LoginPage.vue';
-import JoinPage from './views/JoinPage.vue';
-import HealthPage from './views/HealthPage.vue';
-
+import LogoAires from "../components/LogoAires.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    LoginPage,
-    JoinPage,
-    HealthPage
+    LogoAires
   },
 
 }

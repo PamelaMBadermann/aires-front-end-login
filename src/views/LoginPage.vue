@@ -1,20 +1,17 @@
 <template>
-  <LoginPage/>
-  <JoinPage/>
-  <HealthPage/>
+  <LeftCard/>
+  <LoginForm/>
 </template>
 
 <script>
-import LoginPage from './views/LoginPage.vue';
-import JoinPage from './views/JoinPage.vue';
-import HealthPage from './views/HealthPage.vue';
+import LeftCard from "../components/LeftCard.vue";
+import LoginForm from "../components/JoinForm.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    LoginPage,
-    JoinPage,
-    HealthPage
+    LoginForm,
+    LeftCard
   },
 
 }
@@ -22,7 +19,6 @@ export default {
 
 <style>
 #app {
-  
   font-family: Usual, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

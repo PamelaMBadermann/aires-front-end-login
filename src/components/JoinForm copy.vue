@@ -1,71 +1,69 @@
 <template>
+  <LeftCard/>
   <div class="container">
-    <form id="loginForm" @submit="checkJoinForm" method="post" class="join-form">
+    <form id="joinForm" @submit="checkJoinForm" class="join-form">
       <LogoAires/>
-      <MyTitle title="Acesso via email" subtitle="Acesse sua conta Aires por algum método abaixo"/>
+      <MyTitle title="Crie sua conta" subtitle="Crie sua conta Aires."/>
       <div class="form-unit">
         <label class="my-input-name">Email</label>
-        <input class="my-inputs" placeholder="Email" v-model.trim="email" type="text" name="email"/>
+        <input class="my-inputs" placeholder="Email" :email="email" type="text" name="email"/>
       </div>
       <div class="form-unit">
         <label class="my-input-name">Senha</label>
-        <input class="my-inputs" id="password" placeholder="Senha" v-model.trim="password" type="text" name="password"/>
+        <input class="my-inputs" id="password" placeholder="Senha" :password="password" type="text" name="password"/>
       </div>
-      <label class="my-input-name" style=""><a href="#">Esqueceu sua senha?</a></label>
-      <MyPrimaryButton button-title="Acessar"/>
-      <alert-box class="form-unit" v-if="errors.length">
+      <div class="form-unit">
+        <label class="my-input-name">Confirme sua senha</label>
+        <input class="my-inputs" id="passwordConfirm" placeholder="Senha" v-model.trim="passwordConfirm" type="text" name="passwordConfirm"/>
+      </div>
+      <MyPrimaryButton v-on:click="addUser"></MyPrimaryButton>
+      <span class="form-unit" v-if="errors.length">
         <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
         <ul>
           <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
         </ul>
-      </alert-box>
+      </span>
       <div class="label-footer">
-        <label class="my-input-name">Não possui uma conta? <a href="#">Clique para criar a sua conta</a></label>
+        <label class="my-input-name">Já possui uma conta? <a href="#">Clique aqui para acessar</a></label>
+        <label class="my-input-name" style=""><a href="#">Esqueceu sua senha?</a></label>
       </div> 
     </form>
   </div>
 </template>
 
 <script>
-import MyTitle from "./MyTitle.vue";
+import LeftCard from './LeftCard.vue';
 import MyPrimaryButton from "./MyPrimaryButton.vue";
 import LogoAires from "./LogoAires.vue";
 
 export default {
-  name: "LoginForm",
+  name: "JoinForm",
+  // props: {
+  //   email: {
+  //     type: String,
+  //     required: true,
+  //     default: ""
+  //   },
+  //   password: {
+  //     type: String,
+  //     required: true,
+  //     default: ""
+  //   }
+  // },
   components: {
-    MyTitle,
+    LeftCard,
     MyPrimaryButton,
     LogoAires
   },
-  props: [{
-    name: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    password: {
-      type: String,
-      required: true
-    },
-  }],
-  data() {
-  return {
-    title: "Acesso via email",
-    subtitle: "Acesse sua conta Aires por algum método abaixo",
-    usuarios: [{
-        name: "Nome Usuario",
-        email: "email@example.com",
-        password: "password",
-        passwordConfirm: "password"
-      }],
+    data() {
+    return {
+      usuarios: [
+        {
+          email: "email@example.com",
+          password: "password",
+        } 
+       ],
       errors: [],
-      name: "",
-      email: "",
-      password: "",
       passwordConfirm: ""
     }
   },
@@ -95,15 +93,10 @@ export default {
 
     addUser() {
       this.usuarios.push({
-        name: this.name.value,
-        email: this.email.value,
-        password: this.password.value,
+        name: this.name,
+        email: this.email,
+        password: this.password,
       });
-
-      this.name = "";
-      this.email = "";
-      this.password = "";
-      this.passwordConfirm = "";
     }
   }
 }
