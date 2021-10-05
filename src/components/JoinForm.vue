@@ -9,11 +9,11 @@
         <input class="my-inputs" placeholder="Email" v-model="localEmail" :email="email" type="text" name="email"/>
       </div>
       <div class="form-unit">
-        <label class="my-input-name">Senha</label>
+        <label for="password" class="my-input-name">Senha</label>
         <input class="my-inputs" id="password" placeholder="Senha" v-model="localPassword" :password="password" type="text" name="password"/>
       </div>
       <div class="form-unit">
-        <label class="my-input-name">Confirme sua senha</label>
+        <label for="password" class="my-input-name">Confirme sua senha</label>
         <input class="my-inputs" id="passwordConfirm" placeholder="Senha" v-model.trim="passwordConfirm" type="text" name="passwordConfirm"/>
       </div>
     </form>
@@ -51,7 +51,7 @@ export default {
     MyTitle,
     MySubtitle
   },
-    data() {
+  data() {
     return {
       localEmail: "",
       localPassword: "",

@@ -15,7 +15,9 @@ export default {
     LeftCard,
     JoinForm
   },
-
+  data() {
+    return {};
+  },
 }
 </script>
 

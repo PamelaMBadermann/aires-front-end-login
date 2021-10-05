@@ -5,19 +5,19 @@
       <MyTitle title="Acesso via email">{{title}}</MyTitle>
       <MySubtitle subtitle="Acesse sua conta Aires por algum método abaixo">{{subtitle}}</MySubtitle>
       <div class="form-unit">
-        <label class="my-input-name">Email</label>
+        <label for="email" class="my-input-name">Email</label>
         <input class="my-inputs" placeholder="Email" v-model.trim="email" type="text" name="email"/>
       </div>
       <div class="form-unit">
-        <label class="my-input-name">Senha</label>
+        <label for="password" class="my-input-name">Senha</label>
         <input class="my-inputs" id="password" placeholder="Senha" v-model.trim="password" type="text" name="password"/>
       </div>
       <label class="my-input-name" style=""><a href="#">Esqueceu sua senha?</a></label>
-      <MyPrimaryButton buttontitle="Acesse sua conta">{{buttontitle}}</MyPrimaryButton>
-      <div class="label-footer">
-        <label class="my-input-name">Não possui uma conta? <a href="#">Clique para criar a sua conta</a></label>
-      </div> 
     </form>
+    <MyPrimaryButton buttontitle="Acesse sua conta">{{buttontitle}}</MyPrimaryButton>
+    <div class="label-footer">
+      <label class="my-input-name">Não possui uma conta? <a href="#">Clique para criar a sua conta</a></label>
+    </div>
   </div>
 </template>
 
@@ -29,28 +29,35 @@ import MySubtitle from "./MySubtitle.vue";
 
 export default {
   name: "LoginForm",
+  props: {
+    email: {
+      type: String,
+      required: true,
+      default: ""
+    },
+    password: {
+      type: String,
+      required: true,
+      default: ""
+    }
+  },
   components: {
     MyPrimaryButton,
     LogoAires,
     MyTitle,
     MySubtitle
   },
-  props: [],
-  // props: ["name", "email", "password"],
   data() {
-  return {
-    title: "Acesso via email",
-    subtitle: "Acesse sua conta Aires por algum método abaixo",
-    usuarios: [{
-        name: "Nome Usuario",
-        email: "email@example.com",
-        password: "password",
-        passwordConfirm: "password"
-      }],
+    return {
+      localEmail: "",
+      localPassword: "",
+      usuarios: [
+        {
+          email: "email@example.com",
+          password: "password",
+        } 
+       ],
       errors: [],
-      name: "",
-      email: "",
-      password: "",
       passwordConfirm: ""
     }
   },
@@ -84,11 +91,6 @@ export default {
         email: this.email.value,
         password: this.password.value,
       });
-
-      this.name = "";
-      this.email = "";
-      this.password = "";
-      this.passwordConfirm = "";
     }
   }
 }
