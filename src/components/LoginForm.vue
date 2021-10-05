@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
-    <form id="loginForm" @submit="checkJoinForm" method="post" class="join-form">
-      <!-- <LogoAires/> -->
-      <h1 class="my-title">Acesso via email</h1>
-      <label class="my-subtitle-form">Acesse sua conta Aires por algum método abaixo</label>
+  <div id="loginForm" class="login-form">
+    <form @submit="checkLoginForm">
+      <LogoAires/>
+      <MyTitle title="Acesso via email">{{title}}</MyTitle>
+      <MySubtitle subtitle="Acesse sua conta Aires por algum método abaixo">{{subtitle}}</MySubtitle>
       <div class="form-unit">
         <label class="my-input-name">Email</label>
         <input class="my-inputs" placeholder="Email" v-model.trim="email" type="text" name="email"/>
@@ -13,7 +13,7 @@
         <input class="my-inputs" id="password" placeholder="Senha" v-model.trim="password" type="text" name="password"/>
       </div>
       <label class="my-input-name" style=""><a href="#">Esqueceu sua senha?</a></label>
-      <!-- <MyPrimaryButton buttontitle="Acesse sua conta">{{buttontitle}}</MyPrimaryButton> -->
+      <MyPrimaryButton buttontitle="Acesse sua conta">{{buttontitle}}</MyPrimaryButton>
       <div class="label-footer">
         <label class="my-input-name">Não possui uma conta? <a href="#">Clique para criar a sua conta</a></label>
       </div> 
@@ -22,29 +22,21 @@
 </template>
 
 <script>
-// import MyPrimaryButton from "./MyPrimaryButton.vue";
-// import LogoAires from "./LogoAires.vue";
+import MyPrimaryButton from "./MyPrimaryButton.vue";
+import LogoAires from "./LogoAires.vue";
+import MyTitle from "./MyTitle.vue";
+import MySubtitle from "./MySubtitle.vue";
 
 export default {
   name: "LoginForm",
   components: {
-    // MyPrimaryButton,
-    // LogoAires
+    MyPrimaryButton,
+    LogoAires,
+    MyTitle,
+    MySubtitle
   },
-  props: [{
-    name: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    password: {
-      type: String,
-      required: true
-    },
-  }],
+  props: [],
+  // props: ["name", "email", "password"],
   data() {
   return {
     title: "Acesso via email",
@@ -63,7 +55,7 @@ export default {
     }
   },
   methods: {
-    checkJoinForm(e) {
+    checkLoginForm(e) {
       this.errors = [];
 
       if (this.name.trim() === "" || this.email.trim() === ""|| this.password.trim() === "") {
