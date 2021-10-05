@@ -1,8 +1,9 @@
 <template>
-  <div class="container">
-    <form id="joinForm" @submit="checkJoinForm" class="join-form">
+  <div id="joinForm" class="join-form">
+    <form @submit="checkJoinForm">
       <LogoAires/>
-      <MyTitle title="Crie sua conta" subtitle="Crie sua conta Aires."/>
+      <MyTitle title="Crie sua conta">{{title}}</MyTitle>
+      <MySubtitle subtitle="Crie sua conta Aires.">{{subtitle}}</MySubtitle>
       <div class="form-unit">
         <label for="email" class="my-input-name">Email</label>
         <input class="my-inputs" placeholder="Email" v-model="localEmail" :email="email" type="text" name="email"/>
@@ -15,24 +16,20 @@
         <label class="my-input-name">Confirme sua senha</label>
         <input class="my-inputs" id="passwordConfirm" placeholder="Senha" v-model.trim="passwordConfirm" type="text" name="passwordConfirm"/>
       </div>
-      <MyPrimaryButton v-on:click="addUser"></MyPrimaryButton>
-      <span class="form-unit" v-if="errors.length">
-        <b>Por favor, corrija o(s) seguinte(s) erro(s):</b>
-        <ul>
-          <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-        </ul>
-      </span>
-      <div class="label-footer">
-        <label class="my-input-name">Já possui uma conta? <a href="#">Clique aqui para acessar</a></label>
-        <label class="my-input-name" style=""><a href="#">Esqueceu sua senha?</a></label>
-      </div> 
     </form>
+    <MyPrimaryButton buttontitle="Crie sua conta">{{buttontitle}}</MyPrimaryButton>
+    <div class="label-footer">
+      <label class="my-input-name">Já possui uma conta? <router-link to="/loginpage">Clique aqui para acessar</router-link></label>
+      <label class="my-input-name"><router-link to="/">Esqueceu sua senha?</router-link></label>
+    </div> 
   </div>
 </template>
 
 <script>
 import MyPrimaryButton from "./MyPrimaryButton.vue";
 import LogoAires from "./LogoAires.vue";
+import MyTitle from "./MyTitle.vue";
+import MySubtitle from "./MySubtitle.vue";
 
 export default {
   name: "JoinForm",
@@ -50,7 +47,9 @@ export default {
   },
   components: {
     MyPrimaryButton,
-    LogoAires
+    LogoAires,
+    MyTitle,
+    MySubtitle
   },
     data() {
     return {
@@ -107,38 +106,14 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
 .join-form {
   background-color: #ffffff;
   height: 100vh;
   max-height: 900px;
   min-height: 450px;
-  width: 40%;
   position: absolute;
   right: 0;
   top: 0;
-}
-
-.my-title {
-  margin: 15px;
-  font-size: 40px;
-}
-
-.my-subtitle-form {
-  margin: 15px;
-  text-align: left;
-  font: normal normal normal 16px/19px Usual;
-  letter-spacing: 1.12px;
-  color: #AFB8C0;
-  opacity: 1;
-  /* padding-bottom: 20px; */
 }
 
 .form-unit {
@@ -190,4 +165,5 @@ export default {
 .label-footer a {
   color: #0045E6;
 }
+
 </style>

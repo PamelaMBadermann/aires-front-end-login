@@ -1,11 +1,11 @@
 <template>
-  <button class="my-primary" type="submit" value="Enviar">{{button-title}}</button>
+  <button class="my-primary" buttontitle={buttontitle} type="submit" value="Enviar">{{buttontitle}}</button>
 </template>
 
 <script>
 export default {
   name: "MyPrimaryButton",
-  props: ["button-title"]
+  props: ["buttontitle"]
 }
 
 </script>

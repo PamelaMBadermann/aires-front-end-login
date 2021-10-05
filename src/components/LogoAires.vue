@@ -1,5 +1,7 @@
 <template>
-  <img alt="Logo Aires" src="../assets/aires-logo.png">
+  <div class="logoaires">
+    <img alt="Logo Aires" src="../assets/aires-logo.png">
+  </div>
 </template>
 
 <script>
@@ -16,5 +18,12 @@ img {
   height: 80px;
   width: 80px;
   margin: 20px;
+  text-align: center;
+}
+
+.logoaires {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

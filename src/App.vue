@@ -1,28 +1,17 @@
 <template>
-  <LoginPage/>
-  <JoinPage/>
-  <HealthPage/>
+  <router-view></router-view>
 </template>
 
 <script>
-import LoginPage from './views/LoginPage.vue';
-import JoinPage from './views/JoinPage.vue';
-import HealthPage from './views/HealthPage.vue';
 
 export default {
   name: 'App',
-  components: {
-    LoginPage,
-    JoinPage,
-    HealthPage
-  },
-
+  components: {},
 }
 </script>
 
 <style>
 #app {
-  
   font-family: Usual, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
