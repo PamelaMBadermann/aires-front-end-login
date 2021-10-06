@@ -11,10 +11,14 @@ export default {
 </script>
 
 <style>
-#app {  
+#app {
   font-family: Usual, sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  text-align: flex-start;
+  margin: 0;
+  padding: 0;
   height: 100vh;
-  flex-direction: column;
   flex-wrap: wrap;
 }
 </style>

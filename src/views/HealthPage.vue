@@ -12,6 +12,11 @@
       <label class="label-footer">
         <router-link to="/loginpage">Página de Login</router-link>
       </label>
+      <hr/>
+      <label class="label-footer box">
+        <MySubtitle subtitle="Email de acesso:"/>admin@admin.com
+        <MySubtitle subtitle="Senha de acesso:"/>12345
+      </label>
     </div>
   </router-view>
 </template>
@@ -33,7 +38,7 @@ export default {
 </script>
 
 <style>
-router-view {
+.container {
   font-family: Usual, sans-serif;
   display: flex;
   justify-content: flex-start;
@@ -77,5 +82,11 @@ router-view {
 .my-title {
   margin: 10px;
   font-size: 40px;
+}
+
+.box {
+  border: 1px solid #00000029;
+  border-radius: 5px;
+  height: 160px;
 }
 </style>

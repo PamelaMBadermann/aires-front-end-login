@@ -57,11 +57,11 @@ export default {
   },
   methods: {
     checkLoginForm() {
-      if (this.email == "") {
+      if (document.getElementById("login-email").value == "") {
         return alert("Por favor, preencha o campo Email");
       }
 
-      if (this.password == "") {
+      if (document.getElementById("login-password").value == "") {
         return alert("Por favor, preencha o campo Senha");
       }
     },
@@ -69,17 +69,18 @@ export default {
     loggedIn() {
       this.checkLoginForm()
 
-      if (this.email === this.usuarios.email && this.password === this.usuarios.password) {
-        return window.location("/src/views/LoggedPage.vue");
+      if (document.getElementById("login-email").value == "admin@admin.com" && document.getElementById("login-password").value == "12345") {
+        this.$router.push("/loggedpage")
+      } else {
+        alert("Email ou senha incorretos")
       }
-
     }
   }
 }
 </script>
 
 <style scoped>
-.join-form {
+.login-form {
   background-color: #ffffff;
   height: 100vh;
   max-height: 900px;

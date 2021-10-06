@@ -32,8 +32,8 @@ export default {
 }
 </script>
 
-<style>
-router-view {
+<style scoped>
+.container {
   font-family: Usual, sans-serif;
   display: flex;
   justify-content: flex-start;

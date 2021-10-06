@@ -1,25 +1,25 @@
 <template>
   <router-view>
-    <LeftCard/>
+    <!-- <LeftCard/> -->
     <LoginForm/>
   </router-view>
 </template>
 
 <script>
-import LeftCard from "../components/LeftCard.vue";
+// import LeftCard from "../components/LeftCard.vue";
 import LoginForm from "../components/LoginForm.vue";
 
 export default {
   name: "LoginPage",
   components: {
-    LeftCard,
+    // LeftCard,
     LoginForm
   },
 
 }
 </script>
 
-<style>
+<style scoped>
 router-view {
   font-family: Usual, sans-serif;
   height: 100vh;
