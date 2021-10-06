@@ -5,18 +5,18 @@
       <MyTitle title="Acesso via email">{{title}}</MyTitle>
       <MySubtitle subtitle="Acesse sua conta Aires por algum método abaixo">{{subtitle}}</MySubtitle>
       <div class="form-unit">
-        <label for="email" class="my-input-name">Email</label>
-        <input class="my-inputs" placeholder="Email" v-model.trim="email" type="text" name="email"/>
+        <label class="my-input-name">Email</label>
+        <input class="my-inputs" id="login-email" placeholder="Email" v-model="localEmail" :email="email" type="text" name="email"/>
       </div>
       <div class="form-unit">
-        <label for="password" class="my-input-name">Senha</label>
-        <input class="my-inputs" id="password" placeholder="Senha" v-model.trim="password" type="text" name="password"/>
+        <label class="my-input-name">Senha</label>
+        <input class="my-inputs" id="login-password" placeholder="Senha" v-model="localPassword" :password="password" type="text" name="password"/>
       </div>
-      <label class="my-input-name" style=""><a href="#">Esqueceu sua senha?</a></label>
+      <label class="my-input-name"><router-link to="/">Esqueceu sua senha?</router-link></label>
     </form>
-    <MyPrimaryButton buttontitle="Acesse sua conta">{{buttontitle}}</MyPrimaryButton>
+    <MyPrimaryButton v-on:click="loggedIn()" buttontitle="Acesse sua conta">{{buttontitle}}</MyPrimaryButton>
     <div class="label-footer">
-      <label class="my-input-name">Não possui uma conta? <a href="#">Clique para criar a sua conta</a></label>
+      <label class="my-input-name">Não possui uma conta? <router-link to="/joinpage">Clique para criar a sua conta</router-link></label>
     </div>
   </div>
 </template>
@@ -32,15 +32,12 @@ export default {
   props: {
     email: {
       type: String,
-      required: true,
       default: ""
     },
     password: {
       type: String,
-      required: true,
       default: ""
-    }
-  },
+    }},
   components: {
     MyPrimaryButton,
     LogoAires,
@@ -51,90 +48,48 @@ export default {
     return {
       localEmail: "",
       localPassword: "",
-      usuarios: [
-        {
-          email: "email@example.com",
-          password: "password",
-        } 
-       ],
-      errors: [],
-      passwordConfirm: ""
+      usuarios: [],
+      usuario: {
+        email: "admin@admin.com",
+        password: "12345",
+      },
     }
   },
   methods: {
-    checkLoginForm(e) {
-      this.errors = [];
-
-      if (this.name.trim() === "" || this.email.trim() === ""|| this.password.trim() === "") {
-        return alert("Por favor, preencha todos os campos!");
-      }
-      
-      if (this.email.length < 5) {
-        this.errors.push("Email inválido");
-      }
-      if (this.password.length < 5) {
-        this.errors.push("Senha inválida");
-      }
-      if (this.password !== this.passwordConfirm) {
-        this.errors.push("Senhas não conferem");
-      }
-      if (!this.errors.length) {
-        return true;
+    checkLoginForm() {
+      if (this.email == "") {
+        return alert("Por favor, preencha o campo Email");
       }
 
-      e.preventDefault();
+      if (this.password == "") {
+        return alert("Por favor, preencha o campo Senha");
+      }
     },
 
-    addUser() {
-      this.usuarios.push({
-        name: this.name.value,
-        email: this.email.value,
-        password: this.password.value,
-      });
+    loggedIn() {
+      this.checkLoginForm()
+
+      if (this.email === this.usuarios.email && this.password === this.usuarios.password) {
+        return window.location("/src/views/LoggedPage.vue");
+      }
+
     }
   }
 }
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  height: 100vh;
-}
-
 .join-form {
   background-color: #ffffff;
   height: 100vh;
   max-height: 900px;
   min-height: 450px;
-  width: 40%;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.my-title {
-  margin: 15px;
-  font-size: 40px;
-}
-
-.my-subtitle-form {
-  margin: 15px;
-  text-align: left;
-  font: normal normal normal 16px/19px Usual;
-  letter-spacing: 1.12px;
-  color: #AFB8C0;
-  opacity: 1;
-  /* padding-bottom: 20px; */
 }
 
 .form-unit {
   width: 428px;
   height: 73px;
-  margin: 15px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -149,7 +104,7 @@ export default {
 }
 
 .my-inputs {
-  height: 42px;
+  height: 40px;
   width: 428px;
   background: #ffffff;
   box-shadow: 0px 0px 12px #00000029;
@@ -171,13 +126,13 @@ export default {
   width: 428px;
   height: 73px;
   display: flex;
-  margin: 15px;
+  margin: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.label-footer a {
+router-link {
   color: #0045E6;
 }
 </style>

@@ -13,7 +13,7 @@ export default {
 <style scoped>
 
 .my-primary {
-  height: 42px;
+  height: 40px;
   width: 428px;
   margin: 15px;
   opacity: 1;

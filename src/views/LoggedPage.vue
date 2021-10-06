@@ -4,10 +4,10 @@
       <label class="label-footer">
         <LogoAires/>
       </label>
-      <MyTitle title="Olá,"/>
-      <MySubtitle subtitle="Para onde deseja navegar?"/>
-      <label class="label-footer">
-        <router-link to="/joinpage">Página de Cadastro</router-link>
+      <MyTitle title="Seja bem vindo!"/>
+      <MySubtitle subtitle="Agora você está logado!"/>
+      <label class="label-footer">Voltar para 
+        <router-link to="/">Home</router-link>
       </label>
       <label class="label-footer">
         <router-link to="/loginpage">Página de Login</router-link>
@@ -22,7 +22,7 @@ import MyTitle from "../components/MyTitle.vue";
 import MySubtitle from "../components/MySubtitle.vue";
 
 export default {
-  name: "HealthPage",
+  name: "LoggedPage",
   components: {
     LogoAires,
     MyTitle,
@@ -48,7 +48,7 @@ router-view {
   width: 428px;
   height: 73px;
   display: flex;
-  margin: 10px;
+  margin: 15px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -75,7 +75,7 @@ router-view {
 }
 
 .my-title {
-  margin: 10px;
+  margin: 15px;
   font-size: 40px;
 }
 </style>

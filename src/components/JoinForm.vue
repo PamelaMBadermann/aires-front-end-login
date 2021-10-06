@@ -6,22 +6,22 @@
       <MySubtitle subtitle="Crie sua conta Aires.">{{subtitle}}</MySubtitle>
       <div class="form-unit">
         <label for="email" class="my-input-name">Email</label>
-        <input class="my-inputs" placeholder="Email" v-model="localEmail" :email="email" type="text" name="email"/>
+        <input class="my-inputs" id="join-email" placeholder="Email" v-model="localEmail" :email="email" type="text" name="email"/>
       </div>
       <div class="form-unit">
-        <label for="password" class="my-input-name">Senha</label>
-        <input class="my-inputs" id="password" placeholder="Senha" v-model="localPassword" :password="password" type="text" name="password"/>
+        <label class="my-input-name">Senha</label>
+        <input class="my-inputs" id="join-password" placeholder="Senha" v-model="localPassword" :password="password" type="text" name="password"/>
       </div>
       <div class="form-unit">
-        <label for="password" class="my-input-name">Confirme sua senha</label>
-        <input class="my-inputs" id="passwordConfirm" placeholder="Senha" v-model.trim="passwordConfirm" type="text" name="passwordConfirm"/>
+        <label class="my-input-name">Confirme sua senha</label>
+        <input class="my-inputs" placeholder="Senha" v-model="localPassword" type="text" name="passwordConfirm"/>
       </div>
     </form>
-    <MyPrimaryButton buttontitle="Crie sua conta">{{buttontitle}}</MyPrimaryButton>
+    <MyPrimaryButton v-on:click="addUser()" buttontitle="Crie sua conta">{{buttontitle}}</MyPrimaryButton>
     <div class="label-footer">
       <label class="my-input-name">Já possui uma conta? <router-link to="/loginpage">Clique aqui para acessar</router-link></label>
       <label class="my-input-name"><router-link to="/">Esqueceu sua senha?</router-link></label>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -36,12 +36,10 @@ export default {
   props: {
     email: {
       type: String,
-      required: true,
       default: ""
     },
     password: {
       type: String,
-      required: true,
       default: ""
     }
   },
@@ -51,18 +49,15 @@ export default {
     MyTitle,
     MySubtitle
   },
-  data() {
+    data() {
     return {
       localEmail: "",
       localPassword: "",
-      usuarios: [
-        {
-          email: "email@example.com",
-          password: "password",
-        } 
-       ],
-      errors: [],
-      passwordConfirm: ""
+      usuarios: [],
+      usuario: {
+        email: "admin@admin.com",
+        password: "12345",
+      },
     }
   },
   created() {
@@ -71,32 +66,20 @@ export default {
     console.log(this.email, this.password)
   },
   methods: {
-    checkJoinForm(e) {
-      this.errors = [];
-
-      if (this.name.trim() === "" || this.email.trim() === ""|| this.password.trim() === "") {
-        return alert("Por favor, preencha todos os campos!");
-      }
-      
-      if (this.email.length < 5) {
-        this.errors.push("Email inválido");
-      }
-      if (this.password.length < 5) {
-        this.errors.push("Senha inválida");
-      }
-      if (this.password !== this.passwordConfirm) {
-        this.errors.push("Senhas não conferem");
-      }
-      if (!this.errors.length) {
-        return true;
+    checkJoinForm() {
+      if (document.getElementById("join-email").value == "") {
+        return alert("Por favor, preencha o campo Email");
       }
 
-      e.preventDefault();
+      if (document.getElementById("join-password").value == "") {
+        return alert("Por favor, preencha o campo Senha");
+      }
     },
 
     addUser() {
+      this.checkJoinForm();
+
       this.usuarios.push({
-        name: this.name,
         email: this.email,
         password: this.password,
       });
@@ -111,15 +94,12 @@ export default {
   height: 100vh;
   max-height: 900px;
   min-height: 450px;
-  position: absolute;
-  right: 0;
-  top: 0;
 }
 
 .form-unit {
   width: 428px;
   height: 73px;
-  margin: 15px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -134,7 +114,7 @@ export default {
 }
 
 .my-inputs {
-  height: 42px;
+  height: 40px;
   width: 428px;
   background: #ffffff;
   box-shadow: 0px 0px 12px #00000029;
@@ -156,13 +136,13 @@ export default {
   width: 428px;
   height: 73px;
   display: flex;
-  margin: 15px;
+  margin: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.label-footer a {
+router-link {
   color: #0045E6;
 }
 

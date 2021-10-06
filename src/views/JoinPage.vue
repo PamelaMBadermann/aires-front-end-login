@@ -15,21 +15,17 @@ export default {
     LeftCard,
     JoinForm
   },
-  data() {
-    return {};
-  },
+
 }
 </script>
 
-<style>
-#app {  
+<style scoped>
+router-view {  
   font-family: Usual, sans-serif;
-  /* display: flex;
-  justify-content: flex-start;
-  text-align: flex-start;
-  margin: 0;
-  padding: 0; */
   height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 </style>

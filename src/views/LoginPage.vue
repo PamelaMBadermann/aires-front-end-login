@@ -15,20 +15,13 @@ export default {
     LeftCard,
     LoginForm
   },
-  data() {
-    return {};
-  }
+
 }
 </script>
 
 <style>
-#app {
+router-view {
   font-family: Usual, sans-serif;
-  /* display: flex;
-  justify-content: flex-start;
-  text-align: flex-start;
-  margin: 0;
-  padding: 0; */
   height: 100vh;
   flex-wrap: wrap;
 }
